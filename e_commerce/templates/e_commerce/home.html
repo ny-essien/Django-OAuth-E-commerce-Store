@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-commerce Homepage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'ecommerce_styles/home-style.css' %}">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">E-commerce</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+
+                {% if not request.user.is_authenticated %}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'e_commerce:signin' %}">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'e_commerce:signup' %}">Sign up</a>
+                </li>
+
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'e_commerce:logout-page' %}">Logout</a>
+                </li>
+
+                <li class="nav-item">
+                    <strong class="nav-link"> Hello {{request.user.first_name.upper}}</strong>
+                </li>
+
+                {%endif%}
+
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+            	<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            	<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Welcome to E-commerce!</h1>
+            <p class="lead">We have everything you need.</p>
+            <a href="#" class="btn btn-primary btn-lg">Shop Now</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Categories</h2>
+                <ul class="list-group">
+                    <li class="list-group-item">Category 1</li>
+                    <li class="list-group-item">Category 2</li>
+                    <li class="list-group-item">Category 3</li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <h2>Featured Products</h2>
+                <div class="card-deck">
+                  <div class="card">
+                    <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51psAb8VMvL.jpg" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                      <h5 class="card-title">Product 1</h5>
+                      <p class="card-text">This is a description of Product 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71JWqQB7N7L._SX395_SY395_QL70_ML2_.jpg" class="card-img-top" alt="Product 2">
+                    <div class="card-body">
+                      <h5 class="card-title">Product 2</h5>
+                      <p class="card-text">This is a description of Product 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <img src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81Z3fcBZjdL._UY535_.jpg" class="card-img-top" alt="Product 3">
+                    <div class="card-body">
+                      <h5 class="card-title">Product 3</h5>
+                      <p class="card-text">This is a description of Product 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                      <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">© E-commerce 2021</span>
+        </div>
+    </footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

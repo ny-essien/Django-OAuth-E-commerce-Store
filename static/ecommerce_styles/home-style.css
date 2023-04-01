@@ -1,0 +1,25 @@
+/* CSS for E-commerce homepage */
+
+.jumbotron {
+    background-image: url('https://advancedbytez.com/wp-content/uploads/2022/03/Accessibility-for-your-Online-eCommerce-Store.jpg');
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+}
+
+.jumbotron h1, .jumbotron p {
+    color: #fff;
+}
+
+.card-deck .card {
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    font-weight: bold;
+}
+
+.footer {
+    margin-top: 20px;
+}
